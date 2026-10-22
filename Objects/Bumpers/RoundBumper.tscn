@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Objects/Bumpers/bumper.gd" id="1_bumper"]
+[ext_resource type="Texture2D" path="res://Assets/SummerTile.png" id="2_summer"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bumper"]
+friction = 0.0
+bounce = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bumper"]
+radius = 7.5
+
+[node name="RoundBumper" type="StaticBody2D" groups=["golf_bumpers"]]
+z_index = 1
+physics_material_override = SubResource("PhysicsMaterial_bumper")
+script = ExtResource("1_bumper")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_summer")
+region_enabled = true
+region_rect = Rect2(224, 32, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bumper")

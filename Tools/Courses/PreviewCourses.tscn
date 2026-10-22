@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Tools/Courses/preview_courses.gd" id="1_preview"]
+
+[node name="PreviewCourses" type="Node"]
+script = ExtResource("1_preview")

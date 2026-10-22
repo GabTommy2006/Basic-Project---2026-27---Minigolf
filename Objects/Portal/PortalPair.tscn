@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Objects/Portal/PortalOrange.tscn" id="1_orange"]
+[ext_resource type="PackedScene" path="res://Objects/Portal/PortalBlue.tscn" id="2_blue"]
+
+[node name="PortalPair" type="Node2D"]
+editor_description = "Cặp cổng đã nối sẵn hai chiều. Kéo scene này vào sân để dùng ngay. Cổng cam ở gốc, cổng xanh cách 80 pixel. Khi đặt trên sân, bật Editable Children trên PortalPair để kéo riêng từng cổng."
+
+[node name="PortalOrange" parent="." instance=ExtResource("1_orange")]
+editor_description = "Cổng cam của cặp này; Destination đã nối tới cổng xanh cùng cặp."
+destination = NodePath("../PortalBlue")
+
+[node name="PortalBlue" parent="." instance=ExtResource("2_blue")]
+editor_description = "Cổng xanh của cặp này; Destination đã nối ngược về cổng cam cùng cặp."
+position = Vector2(80, 0)
+destination = NodePath("../PortalOrange")
+
+[editable path="PortalOrange"]
+[editable path="PortalBlue"]

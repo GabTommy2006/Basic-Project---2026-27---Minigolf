@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Objects/Obstacles/rotating_obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/SummerTile.png" id="2_texture"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obstacle"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_bar"]
+size = Vector2(40, 8)
+
+[node name="RotatingLongBar" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_obstacle")
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_texture")
+region_enabled = true
+region_rect = Rect2(192, 16, 48, 16)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape_bar")

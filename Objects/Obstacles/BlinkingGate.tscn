@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Objects/Obstacles/blinking_gate.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/SummerTile.png" id="2_texture"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gate"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_gate"]
+size = Vector2(16, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_clearance"]
+size = Vector2(18, 8)
+
+[node name="BlinkingGate" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_gate")
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_texture")
+region_enabled = true
+region_rect = Rect2(224, 0, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="Glow" type="Sprite2D" parent="Sprite2D"]
+visible = false
+show_behind_parent = true
+scale = Vector2(1.1, 1.7)
+texture_filter = 1
+texture = ExtResource("2_texture")
+region_enabled = true
+region_rect = Rect2(224, 0, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape_gate")
+disabled = true
+
+[node name="Clearance" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clearance"]
+shape = SubResource("RectangleShape_clearance")
+debug_color = Color(1, 0.8, 0.1, 0.25)

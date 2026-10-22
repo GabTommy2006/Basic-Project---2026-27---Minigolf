@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Objects/Obstacles/moving_obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/SummerTile.png" id="2_texture"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obstacle"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_block"]
+size = Vector2(8, 8)
+
+[node name="MovingObstacle" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Body" type="AnimatableBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_obstacle")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+texture_filter = 1
+texture = ExtResource("2_texture")
+region_enabled = true
+region_rect = Rect2(240, 16, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape_block")
+
+[node name="EndPoint" type="Marker2D" parent="."]
+position = Vector2(48, 0)
+gizmo_extents = 5.0

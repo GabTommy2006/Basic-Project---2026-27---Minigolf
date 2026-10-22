@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[node name="Map4" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 180
+editor_draw_limits = true

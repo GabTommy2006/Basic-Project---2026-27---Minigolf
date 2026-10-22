@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Objects/Obstacles/rotating_obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/SummerTile.png" id="2_texture"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obstacle"]
+friction = 0.0
+
+[node name="RotatingDiamond" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_obstacle")
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_texture")
+region_enabled = true
+region_rect = Rect2(176, 0, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -5, 5, 0, 0, 5, -5, 0)
