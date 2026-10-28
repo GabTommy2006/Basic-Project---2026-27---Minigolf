@@ -2,7 +2,7 @@
 
 Game minigolf 2D với đồ họa pixel, được xây dựng bằng **Godot và GDScript** cho Basic Project 2026–2027. Người chơi kéo và thả chuột để đưa bóng vào lỗ với ít gậy nhất, đồng thời tính toán lực đánh, mặt sân và các chướng ngại vật.
 
-> **Trạng thái: Đang phát triển.** Repo hiện có sân chơi thử và sân thử các cơ chế. Bộ sân chơi hoàn chỉnh và bản phát hành sẽ được cập nhật sau.
+> **Trạng thái: Bản chơi 10 màn, đang cân bằng và hoàn thiện.** F5 mở menu chính với HUD, chọn màn, pause, kết quả, sao và lưu tiến độ. Nhạc nền và hiệu ứng âm thanh đã được tích hợp; chưa đóng gói bản phát hành.
 
 ## Tính năng hiện có
 
@@ -14,6 +14,9 @@ Game minigolf 2D với đồ họa pixel, được xây dựng bằng **Godot v�
 - Bumper tròn và tam giác phản xạ, tăng tốc bóng.
 - Chướng ngại vật xoay, di chuyển qua lại và cửa ẩn/hiện theo chu kỳ.
 - Cặp cổng dịch chuyển cam–xanh và hiệu ứng khi bóng đi qua cổng.
+- Menu tiếng Anh và HUD dùng atlas SummerUI v2 đã duyệt; chọn 10 màn, pause, kết quả và cài đặt.
+- Mở khóa màn, lưu số gậy tốt nhất và sao theo ngưỡng riêng từng màn.
+- Continue mở lại màn gần nhất; New Game có xác nhận, giữ cài đặt. Hồ sơ có bản dự phòng và tự khôi phục file ghi dở/hỏng khi còn bản hợp lệ.
 
 ## Yêu cầu
 
@@ -34,7 +37,7 @@ Game minigolf 2D với đồ họa pixel, được xây dựng bằng **Godot v�
 3. Mở project và chờ Godot import tài nguyên.
 4. Mở [Maps/TestMap.tscn](Maps/TestMap.tscn), rồi nhấn **F6** để chạy sân chơi thử.
 
-**F5** chạy scene chính của project, hiện cũng là `Maps/TestMap.tscn`.
+**F5** mở menu chính `UI/Main.tscn` để chơi bộ 10 màn với HUD và lưu tiến độ.
 
 Để thử các chướng ngại vật và cổng dịch chuyển, mở [Maps/MechanicsPlayground.tscn](Maps/MechanicsPlayground.tscn) rồi nhấn **F6**. Sân này có các khu riêng, mỗi khu có bóng để thử cơ chế tương ứng.
 
@@ -56,7 +59,9 @@ Game minigolf 2D với đồ họa pixel, được xây dựng bằng **Godot v�
 ```text
 Assets/           Hình ảnh, font và TileSet
 Maps/             Sân chơi thử và sân thử cơ chế
-  Courses/        Các scene khung cho bộ 10 sân đang xây dựng
+  Courses/        10 sân chơi đã vẽ và xếp thứ tự
+UI/               Menu, chọn màn, HUD, pause, kết quả và cài đặt
+Game/             Danh mục màn, luật sao và lưu tiến độ
 Objects/          Bóng, lỗ, bumper, vật cản và cổng dịch chuyển
 Tools/Courses/    Bố cục JSON và công cụ hỗ trợ dựng/xem sân
 Tests/            Script kiểm thử các cơ chế
@@ -68,15 +73,18 @@ Các thư mục `.godot/`, `tmp/` và `output/` được bỏ qua trong Git vì 
 
 ## Phần đang phát triển
 
-- Các scene `Maps/Courses/Map1.tscn` đến `Map10.tscn` hiện mới có node gốc và camera, chưa phải 10 sân chơi hoàn chỉnh.
+- Các scene `Maps/Courses/Map1.tscn` đến `Map10.tscn` là 10 sân hiện tại. F5 mở `UI/Main.tscn`; F6 vẫn chạy scene sân độc lập.
 - Công cụ và tài liệu bộ sân còn tham chiếu tên `Map01.tscn`–`Map09.tscn`; script dựng sân còn cần `Maps/Courses/course.gd`, hiện chưa có trong repo. Phần này cần hoàn thiện trước khi dùng công cụ dựng/xem hoặc bài kiểm thử bộ sân.
-- Repo hiện chưa có menu chọn sân, chuyển sân tự động hoặc cấu hình export bản phát hành.
+- Menu, chọn sân, chuyển màn qua nút kết quả, sao và lưu tiến độ đã có. Cần playtest/cân bằng và cấu hình export bản phát hành.
 
-Để chơi thử phiên bản hiện tại, dùng `TestMap.tscn` hoặc `MechanicsPlayground.tscn` theo hướng dẫn ở trên.
+Để chơi bản hiện tại, nhấn F5. `TestMap.tscn` và `MechanicsPlayground.tscn` vẫn dùng để thử cơ chế riêng bằng F6.
 
 ## Tài liệu và kiểm thử
 
 - [Hướng dẫn đặt và chỉnh các vật thể trên map](Docs/DatVatTheLenMap.md).
 - [Hướng dẫn chạy các script kiểm thử cơ chế](Tests/README.md).
+- [HUD, giao diện, lưu tiến độ và luật sao](Docs/UIHUD.md).
+- [Dữ liệu người chơi, New Game và khôi phục hồ sơ](Docs/PlayerData.md).
+- [Bộ âm thanh CC0 đã tích hợp và cách nghe thử](Docs/AudioSelection.md).
 
 Các script kiểm thử nằm trong `Tests/` và chạy bằng Godot ở chế độ headless. Chúng phục vụ kiểm tra cơ chế; không cần chạy để mở và chơi thử game.

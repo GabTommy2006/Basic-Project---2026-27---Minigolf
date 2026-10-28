@@ -1,0 +1,13 @@
+Input: C:/Users/Phuc Hung/Documents/minigolf-basic-project/ArtDrafts/Menu/menu-background-static-v1.aseprite
+Palette source: C:/Program Files (x86)/Steam/steamapps/common/Aseprite/SummerTile.aseprite
+Canvas: 320 x 180
+Frames: 1
+Layers: 8
+Layer names and cel positions unchanged: yes
+Per-layer alpha masks unchanged: yes
+Every visible pixel is an exact mapped v1 pixel: yes
+New shapes or objects: none
+Palette entries: 43
+Visible background colors: 20
+All visible colors belong to SummerTile: yes
+Some subtle v1 green shades share the same SummerTile color; the faint mowing stripes merge into the base grass.

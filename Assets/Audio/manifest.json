@@ -1,0 +1,149 @@
+{
+  "gameplay_enabled": true,
+  "downloaded": "2026-10-28",
+  "candidates": [
+    {
+      "id": "menu_click",
+      "title": "Menu click",
+      "file": "menu_click.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/click_003.ogg",
+      "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+      "status": "approved"
+    },
+    {
+      "id": "menu_back",
+      "title": "Menu back",
+      "file": "menu_back.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/back_002.ogg",
+      "sha256": "61581c58194e3f19f531072edabbc344204c7e0a2887b8ededce4357bcf09195",
+      "status": "approved"
+    },
+    {
+      "id": "golf_shot",
+      "title": "Golf shot",
+      "file": "golf_shot.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Impact/Audio/impactWood_light_000.ogg",
+      "sha256": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+      "status": "approved"
+    },
+    {
+      "id": "wall_contact",
+      "title": "Wall contact",
+      "file": "wall_contact.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Impact/Audio/impactSoft_medium_000.ogg",
+      "sha256": "7d3ba0bb5e60a11b5d3e558c141303dcf494256675fbf753c0d252d2cf0481e3",
+      "status": "approved"
+    },
+    {
+      "id": "bumper_hit",
+      "title": "Bumper hit",
+      "file": "bumper_hit.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Impact/Audio/impactMetal_medium_000.ogg",
+      "sha256": "a96f879fec0864a8938e0c745b6996a6c5679c16a234ce31a01cc995e8401003",
+      "status": "approved"
+    },
+    {
+      "id": "arrow_boost",
+      "title": "Arrow boost",
+      "file": "arrow_boost.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/maximize_004.ogg",
+      "sha256": "59c7a24b204be24d2a44a86d1e4d18c2cf51fa0446967a14b2590e8fb3afaf34",
+      "status": "approved"
+    },
+    {
+      "id": "portal_travel",
+      "title": "Portal travel",
+      "file": "portal_travel.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/open_003.ogg",
+      "sha256": "bcdca6b5c9c33aa15ca3fb18a1fa8d98a01b528b85be08c5a610e57c75fc022d",
+      "status": "approved"
+    },
+    {
+      "id": "gate_switch",
+      "title": "Gate switching",
+      "file": "gate_switch.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/rpg-audio",
+      "license": "CC0-1.0",
+      "original_file": "RPG/Audio/metalLatch.ogg",
+      "sha256": "ba9ba60b172b3ebc131a940f25793cd2e207aca7af73dc80d637277f060f1708",
+      "status": "approved"
+    },
+    {
+      "id": "water_splash",
+      "title": "Water splash",
+      "file": "water_splash.ogg",
+      "creator": "rubberduck",
+      "source": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+      "license": "CC0-1.0",
+      "original_file": "Water/splash_02.ogg",
+      "sha256": "eab0bb4bc01386528ba1e6244c6fd8940ee8d3c91ddb9e9cfea186e8560e04de",
+      "status": "approved"
+    },
+    {
+      "id": "hole_capture",
+      "title": "Hole capture",
+      "file": "hole_capture.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/drop_003.ogg",
+      "sha256": "43d086d50f90493a98cd2e09aa6dbf150d164f1578e1ec768d21cb185571ad87",
+      "status": "approved"
+    },
+    {
+      "id": "star_reward",
+      "title": "Star reward",
+      "file": "star_reward.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "original_file": "Interface/Audio/confirmation_002.ogg",
+      "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+      "status": "approved"
+    },
+    {
+      "id": "course_complete",
+      "title": "Course complete - pizzicato",
+      "file": "course_complete.ogg",
+      "creator": "Kenney",
+      "source": "https://kenney.nl/assets/music-jingles",
+      "license": "CC0-1.0",
+      "original_file": "Jingles/Audio/Pizzicato jingles/jingles_PIZZI00.ogg",
+      "sha256": "b442ade3308a2bbda4b8c572c86f9f1071c7bdbcfb1e6f915d35c605b61bd475",
+      "status": "approved"
+    },
+    {
+      "id": "music_sherwood",
+      "title": "Background music - Sherwood",
+      "file": "music_sherwood.ogg",
+      "creator": "Chris Murphy (zesona)",
+      "source": "https://opengameart.org/content/sherwood",
+      "license": "CC0-1.0",
+      "original_file": "sherwood.ogg",
+      "sha256": "a7796c847682f5fd00041ffc0b0d71b67d95a41b4d6d914cd8e11bc37fe29a88",
+      "status": "approved"
+    }
+  ]
+}

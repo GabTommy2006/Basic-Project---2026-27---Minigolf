@@ -9,10 +9,14 @@ extends RigidBody2D
 
 ## Báo số gậy mới cho HUD, bao gồm cả cú đánh và gậy phạt khi vào nước.
 signal stroke_count_changed(count: int)
+## The game host plays audio; standalone physics scenes do not depend on an audio manager.
+signal sound_requested(cue: String)
 
 ## Vận tốc lớn nhất của một cú đánh, tính bằng pixel thế giới/giây.
 ## Tăng để cú đánh nhanh hơn; ngưỡng lỗ nhận bóng được chỉnh riêng trong hole.gd.
-@export var max_shot_speed: float = 120.0
+@export var max_shot_speed: float = 180.0
+## Hệ số tăng tốc khi toàn bộ bóng vào tile mũi tên; chỉ áp dụng một lần mỗi lượt vào ô.
+@export_range(1.0, 3.0, 0.05) var arrow_speed_multiplier: float = 1.2
 ## Kéo xa đến mức này thì đạt lực đánh tối đa; kéo xa hơn không tăng vận tốc.
 @export var max_drag_distance: float = 50.0
 ## Mức giảm vận tốc mỗi giây trên cỏ, tính bằng pixel thế giới/giây².
@@ -80,6 +84,7 @@ var _previous_motion_velocity := Vector2.ZERO
 var _bumper_contacts: Dictionary = {}
 # Khóa ngắn theo ID bumper, ngăn nhiều lần tăng lực khi bóng rung ngay tại một mép va chạm.
 var _bumper_cooldowns: Dictionary = {}
+var _wall_sound_contacts: Dictionary = {}
 # Cổng chỉ đặt yêu cầu; _integrate_forces mới được thay đổi trạng thái thân bóng.
 var _portal_travel_pending := false
 var _portal_exit_position := Vector2.ZERO
@@ -236,6 +241,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		# Chỉ tính gậy khi cú đánh thực sự được áp dụng.
 		stroke_count += 1
 		stroke_count_changed.emit(stroke_count)
+		sound_requested.emit("golf_shot")
 	else:
 		# Cát dùng mức riêng; cỏ, sát mép nước, ô trống và nhãn khác dùng mức mặc định.
 		# Với giá trị mặc định: cát giảm 240 pixel/giây vận tốc mỗi giây, cỏ giảm 40.
@@ -250,6 +256,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# Sau khi nhận cú đánh hoặc giảm tốc tự nhiên, mũi tên chỉ đổi hướng vận tốc hiện tại.
 	# Các nhánh vào lỗ/chìm nước đã return ở trên nên không bị mũi tên tác động.
 	_apply_bumper_bounce(state)
+	_apply_wall_audio(state)
 	_apply_arrow_direction(state)
 	# Lưu sau khi bumper/mũi tên đã xử lý để bước sau có đúng hướng trước va chạm.
 	_previous_motion_velocity = state.linear_velocity
@@ -306,6 +313,8 @@ func _apply_pending_portal_travel(state: PhysicsDirectBodyState2D) -> void:
 	_bumper_contacts.clear()
 	_bumper_cooldowns.clear()
 	_roll_visual.reset_motion(state.transform.origin)
+	_wall_sound_contacts.clear()
+	sound_requested.emit("portal_travel")
 
 ## Chạy hình ảnh sau dịch chuyển; WeakRef giúp an toàn nếu cổng bị xóa ngay sau lượt đi.
 func _play_portal_effects(source_reference: WeakRef, destination_reference: WeakRef,
@@ -392,13 +401,14 @@ func _apply_bumper_bounce(state: PhysicsDirectBodyState2D) -> void:
 	if selected == null:
 		return
 	state.linear_velocity = selected.call("get_bounce_velocity", selected_incoming, selected_normal)
+	sound_requested.emit("bumper_hit")
 	_bumper_contacts[selected.get_instance_id()] = true
 	_bumper_cooldowns[selected.get_instance_id()] = maxf(float(selected.get("cooldown_seconds")), 0.01)
 	# Phản hồi hình ảnh hoãn tới lúc an toàn; phần tăng lực đã được áp dụng ngay ở trên.
 	if selected.has_method("play_hit_effect"):
 		selected.call_deferred("play_hit_effect")
 
-## Cho bóng lăn vào giữa quãng đường xuyên tile rồi mới điều hướng, vẫn đi xuyên được.
+## Chỉ bắt đầu điều hướng khi toàn bộ bóng đã lăn vào trong tile mũi tên.
 func _apply_arrow_direction(state: PhysicsDirectBodyState2D) -> void:
 	# Lấy đoạn đường vừa đi trong thế giới, không dự đoán trước vị trí của bước kế tiếp.
 	var world_position := state.transform.origin
@@ -419,24 +429,26 @@ func _apply_arrow_direction(state: PhysicsDirectBodyState2D) -> void:
 	# TileSet chưa tạo arrow_direction thì vẫn chơi bình thường, không báo lỗi đọc dữ liệu.
 	if surface_tile_map.tile_set.get_custom_data_layer_by_name(ARROW_DATA_NAME) < 0:
 		return
-	# Lấy độ lớn vận tốc ngay lúc điều hướng, không dùng max_shot_speed để tránh tăng lực.
+	# Tile tăng tốc từ vận tốc đang lăn, độc lập với tốc độ đánh tối đa.
 	var speed := state.linear_velocity.length()
 	# Không đặt ngưỡng tốc độ tối thiểu: chậm bao nhiêu vẫn nhận; bóng đứng yên không tự tăng lực.
 	if speed == 0.0:
 		return
 	# Dùng toàn bề ngang ô, kể cả đường đi lệch tâm; không bắt bóng chạm đúng một điểm nhỏ.
-	# Bóng phải lăn đến nửa quãng đường xuyên ô trước khi rẽ, nên có thể đè lên mũi tên.
+	# Cả hình tròn va chạm phải nằm trong ô; tâm vừa qua mép chưa đủ để rẽ.
 	# Chỉ đổi vận tốc; vị trí bóng tiếp tục do vật lý xử lý, không bị kéo hoặc chặn ở mép.
 	var cell := surface_tile_map.local_to_map(surface_tile_map.to_local(world_position))
 	var previous_cell := surface_tile_map.local_to_map(surface_tile_map.to_local(previous_position))
 	var tile_direction := _get_arrow_direction_at_cell(cell)
 	if tile_direction != Vector2.ZERO:
-		# Sau lần rẽ đầu, giữ đúng hướng khi còn trong cùng ô; không tính lại điểm giữa
-		# theo hướng mới vì như vậy có thể khiến bóng rẽ qua lại ngay trên mũi tên.
+		# Sau lần rẽ đầu, giữ đúng hướng khi còn trong cùng ô.
 		var already_guiding := previous_was_guiding and previous_cell == cell
 		var turn_distance := _get_arrow_turn_distance(cell, previous_position,
 			world_position, state.linear_velocity)
 		if already_guiding or turn_distance < INF:
+			if not already_guiding:
+				speed *= maxf(arrow_speed_multiplier, 1.0)
+				sound_requested.emit("arrow_boost")
 			state.linear_velocity = surface_tile_map.global_transform.basis_xform(tile_direction).normalized() * speed
 			_previous_arrow_was_guiding = true
 			return
@@ -449,7 +461,6 @@ func _apply_arrow_direction(state: PhysicsDirectBodyState2D) -> void:
 	# ZERO nghĩa là chưa có hướng mới; INF để so sánh và chọn điểm rẽ gần đầu đoạn đường nhất.
 	var direction := Vector2.ZERO
 	var nearest_distance := INF
-	var current_direction := state.linear_velocity.normalized()
 	for cell_x in range(min_x, max_x + 1):
 		for cell_y in range(min_y, max_y + 1):
 			var candidate := Vector2i(cell_x, cell_y)
@@ -461,10 +472,8 @@ func _apply_arrow_direction(state: PhysicsDirectBodyState2D) -> void:
 			if candidate_direction == Vector2.ZERO:
 				continue
 			var world_direction := surface_tile_map.global_transform.basis_xform(candidate_direction).normalized()
-			# Đã đi đúng hướng thì không cần đổi; vẫn xét tiếp để mũi tên mới phía sau có thể rẽ bóng.
-			if world_direction.is_equal_approx(current_direction):
-				continue
-			# Chỉ nhận khi đã qua điểm giữa của đường xuyên tile, không nhận ngay tại mép ô.
+			# Đi đúng hướng vẫn nhận tăng tốc khi lăn hẳn qua tile.
+			# Nhận khi đoạn đường thực sự đi vào trong ô, bỏ qua tiếp xúc đúng mép/góc.
 			var distance_from_start := _get_arrow_turn_distance(candidate, previous_position,
 				world_position, state.linear_velocity)
 			if distance_from_start < nearest_distance:
@@ -472,11 +481,29 @@ func _apply_arrow_direction(state: PhysicsDirectBodyState2D) -> void:
 				direction = world_direction
 	if direction == Vector2.ZERO:
 		return
-	# Hướng đã chuẩn hóa nhân tốc độ hiện tại: chỉ rẽ, không tăng tốc, không cộng gậy hay nhảy vị trí.
+	# Tăng tốc một lần cho tile đã đi xuyên; không cộng gậy hoặc nhảy vị trí.
 	# Bóng có thể đã vượt hẳn ô trong bước nhanh này; vẫn nhận được hướng của ô vừa đi xuyên.
-	state.linear_velocity = direction * speed
+	state.linear_velocity = direction * speed * maxf(arrow_speed_multiplier, 1.0)
+	sound_requested.emit("arrow_boost")
 
-## Khoảng cách bình phương tới điểm rẽ giữa đường xuyên ô; INF nếu bóng chưa tới đó.
+
+## One sound for a new wall contact, rather than one sound every physics tick.
+func _apply_wall_audio(state: PhysicsDirectBodyState2D) -> void:
+	var touching: Dictionary = {}
+	var hit := false
+	for index in state.get_contact_count():
+		var collider := state.get_contact_collider_object(index) as Node
+		if not is_instance_valid(collider) or collider.is_in_group("golf_bumpers"):
+			continue
+		var id := collider.get_instance_id()
+		touching[id] = true
+		if not _wall_sound_contacts.has(id) and _previous_motion_velocity.length() >= 25.0:
+			hit = true
+	_wall_sound_contacts = touching
+	if hit:
+		sound_requested.emit("wall_contact")
+
+## Khoảng cách bình phương tới điểm vào tile; INF nếu chưa có đường lăn trong ô.
 func _get_arrow_turn_distance(cell: Vector2i, segment_start: Vector2,
 		segment_end: Vector2, velocity: Vector2) -> float:
 	# Hướng của đoạn vừa đi cho biết bóng đang lăn vào từ phía nào, kể cả đường chéo.
@@ -493,6 +520,22 @@ func _get_arrow_turn_distance(cell: Vector2i, segment_start: Vector2,
 	var half_size := Vector2(surface_tile_map.tile_set.tile_size) * 0.5
 	var minimum := center - half_size
 	var maximum := center + half_size
+	# Thu vùng nhận theo bán kính collider để toàn bộ bóng nằm trong tile mới rẽ.
+	# Đổi cả collider về local của map để hỗ trợ sân/bóng được xoay hoặc scale.
+	var collider := $CollisionShape2D as CollisionShape2D
+	var circle := collider.shape as CircleShape2D
+	if circle == null:
+		return INF
+	var collider_in_map := surface_tile_map.global_transform.affine_inverse() * collider.global_transform
+	var radius := circle.radius * Vector2(
+		Vector2(collider_in_map.x.x, collider_in_map.y.x).length(),
+		Vector2(collider_in_map.x.y, collider_in_map.y.y).length())
+	minimum += radius
+	maximum -= radius
+	if minimum.x >= maximum.x or minimum.y >= maximum.y:
+		return INF
+	local_start += surface_tile_map.global_transform.affine_inverse().basis_xform(
+		collider.global_position - global_position)
 	# Cắt đường thẳng với hai dải X/Y của tile để tìm điểm vào và điểm ra trên cùng đường.
 	# Dùng đường thẳng kéo dài vì đoạn của một bước chậm có thể chưa đi tới cạnh đối diện.
 	var entry_distance := -INF
@@ -500,7 +543,7 @@ func _get_arrow_turn_distance(cell: Vector2i, segment_start: Vector2,
 	for axis in range(2):
 		if is_zero_approx(local_direction[axis]):
 			# Đi song song cạnh: nằm ngoài dải này thì không thể đi xuyên tile đó.
-			if local_start[axis] < minimum[axis] or local_start[axis] > maximum[axis]:
+			if local_start[axis] <= minimum[axis] or local_start[axis] >= maximum[axis]:
 				return INF
 			continue
 		var first_edge := (minimum[axis] - local_start[axis]) / local_direction[axis]
@@ -516,13 +559,11 @@ func _get_arrow_turn_distance(cell: Vector2i, segment_start: Vector2,
 	# Không nhận ô nằm hoàn toàn sau lưng hoặc vẫn ở phía trước đoạn bóng thực sự đã đi.
 	if exit_distance < 0.0 or entry_distance > segment_length:
 		return INF
-	# Đi được nửa đường từ cạnh vào tới cạnh ra mới rẽ. Với tile 16px, đi ngang cần vào 8px.
-	# Đường lệch tâm/đường chéo cũng có điểm giữa riêng, nên không cần đi đúng tâm hình mũi tên.
-	var turn_distance := (entry_distance + exit_distance) * 0.5
-	if turn_distance > segment_length + 0.0001:
+	# Cần có đoạn nằm hẳn trong ô: tới đúng cạnh vào hoặc chỉ sượt cạnh chưa nhận.
+	# Đã ở trong ô và vừa đánh bóng cũng nhận hướng ngay, không cần đợi đến giữa tile.
+	if exit_distance <= 0.0001 or entry_distance >= segment_length - 0.0001:
 		return INF
-	# Bắt đầu ở nửa sau của ô nghĩa là đã đè lên mũi tên rồi, có thể nhận hướng ngay.
-	return pow(maxf(turn_distance, 0.0), 2.0)
+	return pow(maxf(entry_distance, 0.0), 2.0)
 
 ## Đọc hướng local của một ô; chỉ gọi sau khi đã xác nhận TileMap và Custom Data tồn tại.
 func _get_arrow_direction_at_cell(cell: Vector2i) -> Vector2:
@@ -588,6 +629,8 @@ func _is_deep_enough_in_water(world_position: Vector2) -> bool:
 
 ## Dừng bóng tại chỗ rơi và bắt đầu một lần xử lý nước.
 func _begin_water_fall(state: PhysicsDirectBodyState2D) -> void:
+	sound_requested.emit("water_splash")
+	_wall_sound_contacts.clear()
 	# Dừng tween hiện hình của cổng trước khi nước làm bóng thu nhỏ và mờ dần.
 	_portal_visual.cancel()
 	# Điểm rơi và điểm hồi không phải một đoạn lăn, nên không được quét mũi tên giữa hai điểm.
@@ -682,6 +725,7 @@ func sink_into_hole(hole_position: Vector2) -> void:
 	# Chặn xử lý vào lỗ nhiều lần và chặn tween của lỗ giành Sprite2D khi bóng đang chìm.
 	if is_sunk or is_in_water:
 		return
+	sound_requested.emit("hole_capture")
 	# Hủy tween cổng để bóng đã lọt lỗ không bị phóng to/hiện lại giữa chừng.
 	_portal_visual.cancel()
 	is_sunk = true

@@ -1,0 +1,12 @@
+Pack: SummerUI v1
+Source palette: SummerTile.aseprite
+Asset groups: 24
+Individual PNGs: 55
+All visible asset pixels are exact SummerTile colors: yes
+Static state images: yes
+Master atlas layers: 55
+Same canvas size across each group's states: yes
+Saved individual-source frames compared to PNGs: 54
+Atlas regions compared to original pixels: 55
+Atlas overlap: none
+Game scene integration: not performed

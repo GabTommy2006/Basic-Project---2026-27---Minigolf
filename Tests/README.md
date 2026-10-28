@@ -34,17 +34,42 @@ Trong môi trường hạn chế quyền ghi thư mục user, thêm `--log-file`
 
 Mỗi script in kết quả PASS/FAIL và thoát với mã khác 0 nếu có lỗi.
 
-## Bộ mười sân mới
+## Giao diện và camera hiện tại
+
+```powershell
+godot --headless --path . --script res://Tests/game_ui_smoke.gd
+godot --headless --path . --script res://Tests/game_audio_smoke.gd
+godot --headless --path . --script res://Tests/course_camera_smoke.gd
+```
+
+`game_ui_smoke.gd` kiểm tra luồng menu/chọn màn, kéo-thả qua viewport chính, HUD, pause/resume, settings, restart, kết quả, mở khóa và lưu/tải tiến độ. File lưu test nằm ở `tmp/ui-check/`, không ảnh hưởng dữ liệu người chơi.
+
+`course_camera_smoke.gd` kiểm tra camera các map 4–10 ở ba kích thước cửa sổ và 30/60/144 FPS.
+
+`game_audio_smoke.gd` kiểm tra tài nguyên âm thanh, nhạc lặp, cue từ cú đánh thật, chống phát dồn, pause/resume, kết quả/sao, âm lượng và việc nhạc không khởi động lại khi chuyển màn. File lưu test nằm trong `tmp/ui-check/`, không ảnh hưởng dữ liệu người chơi.
+
+## Toàn bộ game và dữ liệu người chơi
+
+Chạy `Tools/run_tests.ps1` để kiểm tra 13 nhóm hiện tại, gồm cơ chế vật lý, UI, audio, camera, dữ liệu và 80 phiên thử trên 10 map, mỗi phiên tối đa 4 cú đánh liên tiếp ở các góc khác nhau. Thêm `-CheckRestart` để kiểm tra thêm 8 bước bằng nhiều tiến trình game độc lập với hồ sơ QA trong AppData:
+
+```powershell
+./Tools/run_tests.ps1 -CheckRestart
+```
+
+Nếu Godot nằm ở vị trí khác, truyền `-GodotPath 'đường dẫn Godot.exe'`. Log ở `tmp/test-results/`. Runner kiểm tra cả mã thoát, marker kết quả và lỗi GDScript, tránh coi trường hợp assert/parse error kết thúc do timeout là thành công.
+
+`player_data_smoke.gd` kiểm tra save/recovery/migration/New Game. `surfaces_smoke.gd` kiểm tra cỏ/cát/nước, bốn hướng mũi tên, toàn bộ bóng vào tile mới tăng tốc một lần, và ngưỡng lỗ nhận bóng 160 px/s.
+
+`gameplay_framing_smoke.gd` kiểm tra cả 10 map trong viewport của HUD ở năm kích thước cửa sổ: phủ ngang, HUD bám mép không che sân, thấy trọn sân và lỗ, camera bám mượt trong khoảng dư và không zoom nhấp nhô.
+
+`ui_edge_cases_smoke.gd` nhấn/thả chuột qua GUI thật để kiểm tra menu, pause, Settings, restart, kết quả và màn cuối. Tạo lỗi ghi có kiểm soát để kiểm tra hủy thoát vẫn quay lại kết quả, không lặp thưởng và không bị bảng kết quả trễ thay mất xác nhận thoát.
+
+`shot_stress.gd` chạy 80 sân vật lý độc lập, đánh tiếp khi bóng đã dừng, bỏ qua bóng đã vào lỗ/chìm nước. Mỗi lượt chạy báo số cú đánh thực tế; kiểm tra vị trí/vận tốc hữu hạn và bóng không lọt ra ngoài biên map. Runner giới hạn FPS để bộ đếm khung hình không dừng bài thử trước khi đủ nhịp vật lý.
+
+## Mười sân hiện tại
 
 ```powershell
 godot --headless --path . --script res://Tests/courses_smoke.gd
 ```
 
-`courses_smoke.gd` đọc trực tiếp `Maps/Courses/Map01.tscn` tới `Map10.tscn`,
-kiểm tra tường kín và có va chạm, điểm đặt bóng/lỗ không bị vật cản đè,
-tuyến tham khảo tránh nước/tường và khả năng nối đường giữa điểm đầu với lỗ.
-Màn 9 phải cần cổng mới nối được hai đảo; các cổng phải nối Destination hai chiều.
-Kiểm tra thực tế gồm cú đánh một gậy ở màn 1, báo hoàn thành mà không tự chuyển màn,
-dịch chuyển qua cổng ở màn 9 không làm bóng rơi nước hoặc tính thêm gậy,
-cửa vàng chặn đúng khe và EndPoint của vật cản màn 7 vẫn chuyển động sau khi lưu scene.
-Script chỉ chạy các scene trong bộ nhớ, không dựng lại hoặc ghi đè map.
+`courses_smoke.gd` đọc trực tiếp `Maps/Courses/Map1.tscn` tới `Map10.tscn` theo thứ tự hiện tại. Kiểm tra điểm xuất phát/lỗ, va chạm vật cản, nối cổng hai chiều, đường nối ô sân gồm portal và cú đánh một gậy thật ở màn 1. Hole.png đã có ô cỏ riêng nên không bắt buộc TileMap phải có tile phía dưới lỗ. Script không dùng bố cục/metadata từ bản dựng cũ và không ghi đè map.

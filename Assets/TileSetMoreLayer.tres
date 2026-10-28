@@ -1,0 +1,38 @@
+[gd_resource type="TileSet" load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/MoreLayer.png" id="1_s38rt"]
+[ext_resource type="Texture2D" uid="uid://dvu84xfyig3ou" path="res://Assets/MoreLayer2.png" id="2_morelayer2"]
+[ext_resource type="Texture2D" uid="uid://w0pma70lg1n6" path="res://Assets/MoreLayer3.png" id="3_morelayer3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4f2e7"]
+resource_name = "MoreLayer"
+texture = ExtResource("1_s38rt")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_morelayer2"]
+resource_name = "MoreLayer2"
+texture = ExtResource("2_morelayer2")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_morelayer3"]
+resource_name = "MoreLayer3"
+texture = ExtResource("3_morelayer3")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+
+[resource]
+resource_name = "MoreLayer 16x16"
+sources/0 = SubResource("TileSetAtlasSource_4f2e7")
+sources/1 = SubResource("TileSetAtlasSource_morelayer2")
+sources/2 = SubResource("TileSetAtlasSource_morelayer3")

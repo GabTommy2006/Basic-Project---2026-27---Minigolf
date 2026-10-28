@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "courses": [
+    {"number": 1, "three_star_strokes": 2, "two_star_strokes": 4},
+    {"number": 2, "three_star_strokes": 3, "two_star_strokes": 5},
+    {"number": 3, "three_star_strokes": 3, "two_star_strokes": 5},
+    {"number": 4, "three_star_strokes": 4, "two_star_strokes": 6},
+    {"number": 5, "three_star_strokes": 5, "two_star_strokes": 7},
+    {"number": 6, "three_star_strokes": 4, "two_star_strokes": 6},
+    {"number": 7, "three_star_strokes": 5, "two_star_strokes": 7},
+    {"number": 8, "three_star_strokes": 5, "two_star_strokes": 7},
+    {"number": 9, "three_star_strokes": 6, "two_star_strokes": 8},
+    {"number": 10, "three_star_strokes": 7, "two_star_strokes": 9}
+  ]
+}

@@ -1,60 +1,31 @@
-# Bộ mười sân SummerTile
+# Chơi và sửa mười sân SummerTile
 
-Các sân nằm trong `Maps/Courses/`, mỗi file là một scene độc lập đã có TileMap, Camera2D,
-Ball và Hole. Có thể chơi thử ngay và chỉnh bố cục bằng editor; không cần sinh sân lúc chạy.
+Các sân hiện tại là `Maps/Courses/Map1.tscn` tới `Map10.tscn`, theo thứ tự đã sắp xếp trong game. Mỗi scene chứa TileMap, Camera2D, Ball, Hole và các vật thể của sân.
 
-## Mở và chơi
+## Chạy game
 
-1. Trong FileSystem của Godot, mở `Maps/Courses/Map01.tscn` hoặc map muốn thử.
-2. Nhấn **F6** để chạy scene đang mở.
-3. Kéo rồi thả chuột ở bóng để đánh. Nhấn **R** để chơi lại sân bất kỳ lúc nào.
+Nhấn **F5** để mở `UI/Main.tscn`: menu, Continue, New Game, chọn sân, cài đặt và hướng dẫn. Hoàn thành sân sẽ lưu số sao/kỷ lục và mở sân tiếp theo. **Esc** mở hoặc đóng bảng pause; **R** trong lúc chơi mở xác nhận chơi lại.
 
-F5 chạy scene chính đang cấu hình trong project. Muốn bắt đầu game ở bộ sân này,
-nhấp phải `Map01.tscn` → **Set as Main Scene**.
+Để thử riêng bố cục, mở một scene Map rồi nhấn **F6**. Cách này chạy riêng sân; dùng F5 khi kiểm tra HUD, chuyển màn và dữ liệu người chơi. Giữ `UI/Main.tscn` làm scene chính của project.
 
-Mười sân hiện chơi độc lập. Chưa gắn HUD, menu chọn sân hoặc tự chuyển màn;
-các phần đó sẽ làm ở bước bạn yêu cầu sau. Root mỗi sân có tín hiệu `course_completed`
-báo số màn và số gậy để kết nối giao diện về sau.
+Khi bóng đứng yên, nhấn vào bóng, kéo ngược hướng muốn đánh rồi thả. Trong game đầy đủ, thanh Power hiển thị lực kéo.
 
-## Ý tưởng từng sân
+## Sửa sân trong Godot
 
-- **Map01 — Cú đánh đầu tiên:** sân cỏ trống, bóng và lỗ cùng hàng cách bảy ô.
-  Chỉ tập kéo/thả để đánh vào lỗ; không có cát, nước, mũi tên hoặc vật cản bên trong.
-- **Map02 — Vòng quanh đảo cát:** đi vòng khối tường giữa sân, chọn đường cỏ hoặc qua bãi cát.
-- **Map03 — Qua hai hồ:** đi giữa hai hồ lệch nhau; luôn có đường cỏ khô nối tới lỗ.
-- **Map04 — Zigzag và ba mũi tên:** các mũi tên đưa bóng theo đường gấp khúc; có cát gần đích.
-- **Map05 — Ngã tư thanh xoay:** thanh xám ngắn quay ở giữa sân chữ thập, có chỗ dừng trước nó.
-- **Map06 — Hai cửa chờ nhịp:** hai cửa vàng chặn hai cửa phòng, có phòng cỏ và cát để chờ giữa chúng.
-- **Map07 — Hành lang qua lại:** hai khối xám chạy ngang hai nhánh của sân chữ H.
-- **Map08 — Bật bóng qua khúc cua:** bumper tròn và hai tam giác ở sân chữ L;
-  vẫn có đường cỏ đi vòng để sửa cú đánh, và bãi cát hãm tốc trước green đặt lỗ.
-- **Map09 — Hai đảo dịch chuyển:** nước chia hai nửa sân; dùng cặp cam–xanh đã nối hai chiều.
-- **Map10 — Vòng hồ và cánh cửa cuối:** đi quanh hồ rồi canh cửa vàng;
-  có cặp cổng làm đường tắt, vẫn đi được bằng đường cỏ bình thường.
+Chọn **TileMap** để vẽ bằng TileSetSummer hiện tại. Di chuyển **Ball**, **Hole** hoặc các node vật thể để đổi vị trí. Hole.png có sẵn ô cỏ riêng; không bắt buộc phải vẽ tile dưới lỗ.
 
-## Sửa bằng Godot
+Các thuộc tính ở node gốc của vật thể điều khiển tốc độ quay, chu kỳ gate, đường chạy và lực bật. Với vật thể di chuyển, chỉnh marker EndPoint theo scene thực tế. Với portal, giữ Destination nối hai chiều và chừa khoảng trống an toàn ở đầu ra.
 
-Chọn **TileMap** rồi vẽ/sửa trực tiếp bằng TileSetSummer đã gắn nhãn.
-Kéo **Ball**, **Hole**, hoặc các node vật thể để đổi vị trí. Chọn node gốc của từng vật thể
-để chỉnh tốc độ quay, nhịp ẩn/hiện, thời gian di chuyển hoặc lực bật như trước.
+Map 4–10 dùng `Maps/course_follow_camera.gd`: lấy khung sân, theo bóng và xét vị trí lỗ. Khi mở rộng sân, kiểm tra lại camera bằng F5 vì HUD có vùng hiển thị sân riêng. Không mặc định mọi sân có cùng kích thước 24×14 ô.
 
-Với Map07, node **LeftPatrol/EndPoint** và **RightPatrol/EndPoint** đã cho phép chỉnh riêng.
-Kéo marker để đổi điểm cuối đường chạy. Với cổng, giữ **Destination** hai chiều;
-chừa khoảng cỏ ở đầu ra và tránh đặt lỗ sát nơi bóng vừa được bumper tăng tốc.
+## Sao và lưu dữ liệu
 
-**Camera2D** đang đặt để thấy trọn khung 24×14 ô, mỗi ô 16 pixel. Nếu mở rộng sân,
-chỉnh Position/Zoom của camera để nhìn hết đường bóng.
+Ngưỡng sao từng sân nằm trong `Game/courses.json`. Ngưỡng 3 sao của màn 1–10 lần lượt là **2, 3, 3, 4, 5, 4, 5, 5, 6, 7 gậy**. Ngưỡng 2 sao thêm 2 gậy; hoàn thành với nhiều gậy hơn được 1 sao.
 
-## Xem ảnh toàn bộ sân
+Xem `Docs/PlayerData.md` để biết vị trí file lưu, Continue, New Game và khôi phục dữ liệu.
 
-Mở `Tools/Courses/PreviewCourses.tscn` rồi F6 để xem mười sân cùng lúc.
-Công cụ xuất ảnh tại `output/courses_overview.png`; scene này chỉ phục vụ xem bố cục.
+## Công cụ cũ và kiểm tra
 
-## Công cụ dựng bố cục gốc
+JSON và trình dựng trong `Tools/Courses/` là bản phác ban đầu, không phản ánh toàn bộ bố cục đã sửa tay và thứ tự hiện tại. Không dùng chúng để dựng lại các map đang chơi trừ khi chủ động muốn thay bố cục.
 
-Ba file JSON trong `Tools/Courses/` giữ bản phác ô ban đầu và đường tham khảo.
-`build_courses.gd` đã dùng chúng để tạo ra mười scene. Chơi và sửa các scene không cần chạy lại công cụ.
-
-Công cụ mặc định dừng nếu đã có scene để giữ những chỉnh sửa bằng tay.
-Cờ `-- --rebuild` cho phép ghi đè toàn bộ mười scene từ JSON, vì vậy chỉ dùng khi thật sự
-muốn bỏ bố cục đã sửa và quay lại bản gốc.
+Chạy `Tools/run_tests.ps1 -CheckRestart` để kiểm tra các cơ chế, UI, camera và lưu dữ liệu. Kiểm tra trực quan từng sân trong Godot vẫn cần thiết khi thay bố cục.

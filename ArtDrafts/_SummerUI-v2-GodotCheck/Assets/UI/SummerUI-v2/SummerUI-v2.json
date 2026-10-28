@@ -1,0 +1,1496 @@
+{
+  "atlas": "SummerUI-v2.png",
+  "atlas_height": 512,
+  "atlas_width": 512,
+  "canvas_scale": 1,
+  "frame_bevel": 1,
+  "frame_outer_stroke": 1,
+  "grid_size": 16,
+  "name": "SummerUI Steel",
+  "padding": 16,
+  "palette": "SummerTile.gpl",
+  "palette_colors": 43,
+  "regions": [
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_primary",
+      "height": 16,
+      "id": "button_primary/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_primary_normal.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 0,
+      "tile_y": 0,
+      "width": 96,
+      "x": 0,
+      "y": 0,
+      "godot_texture": "godot/regions/button_primary_normal.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_primary_normal.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_secondary",
+      "height": 16,
+      "id": "button_secondary/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_secondary_normal.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 7,
+      "tile_y": 0,
+      "width": 96,
+      "x": 112,
+      "y": 0,
+      "godot_texture": "godot/regions/button_secondary_normal.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_secondary_normal.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_icon",
+      "height": 16,
+      "id": "button_icon/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_icon_normal.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 14,
+      "tile_y": 0,
+      "width": 16,
+      "x": 224,
+      "y": 0,
+      "godot_texture": "godot/regions/button_icon_normal.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_icon_normal.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_primary",
+      "height": 16,
+      "id": "button_primary/hover",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_primary_hover.png",
+      "state": "hover",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 16,
+      "tile_y": 0,
+      "width": 96,
+      "x": 256,
+      "y": 0,
+      "godot_texture": "godot/regions/button_primary_hover.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_primary_hover.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_secondary",
+      "height": 16,
+      "id": "button_secondary/hover",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_secondary_hover.png",
+      "state": "hover",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 23,
+      "tile_y": 0,
+      "width": 96,
+      "x": 368,
+      "y": 0,
+      "godot_texture": "godot/regions/button_secondary_hover.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_secondary_hover.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_icon",
+      "height": 16,
+      "id": "button_icon/hover",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_icon_hover.png",
+      "state": "hover",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 30,
+      "tile_y": 0,
+      "width": 16,
+      "x": 480,
+      "y": 0,
+      "godot_texture": "godot/regions/button_icon_hover.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_icon_hover.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_primary",
+      "height": 16,
+      "id": "button_primary/pressed",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_primary_pressed.png",
+      "state": "pressed",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 0,
+      "tile_y": 2,
+      "width": 96,
+      "x": 0,
+      "y": 32,
+      "godot_texture": "godot/regions/button_primary_pressed.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_primary_pressed.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_secondary",
+      "height": 16,
+      "id": "button_secondary/pressed",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_secondary_pressed.png",
+      "state": "pressed",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 7,
+      "tile_y": 2,
+      "width": 96,
+      "x": 112,
+      "y": 32,
+      "godot_texture": "godot/regions/button_secondary_pressed.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_secondary_pressed.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_icon",
+      "height": 16,
+      "id": "button_icon/pressed",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_icon_pressed.png",
+      "state": "pressed",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 14,
+      "tile_y": 2,
+      "width": 16,
+      "x": 224,
+      "y": 32,
+      "godot_texture": "godot/regions/button_icon_pressed.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_icon_pressed.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_primary",
+      "height": 16,
+      "id": "button_primary/disabled",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_primary_disabled.png",
+      "state": "disabled",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 16,
+      "tile_y": 2,
+      "width": 96,
+      "x": 256,
+      "y": 32,
+      "godot_texture": "godot/regions/button_primary_disabled.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_primary_disabled.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_secondary",
+      "height": 16,
+      "id": "button_secondary/disabled",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_secondary_disabled.png",
+      "state": "disabled",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 23,
+      "tile_y": 2,
+      "width": 96,
+      "x": 368,
+      "y": 32,
+      "godot_texture": "godot/regions/button_secondary_disabled.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_secondary_disabled.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "button_icon",
+      "height": 16,
+      "id": "button_icon/disabled",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/button_icon_disabled.png",
+      "state": "disabled",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 30,
+      "tile_y": 2,
+      "width": 16,
+      "x": 480,
+      "y": 32,
+      "godot_texture": "godot/regions/button_icon_disabled.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      },
+      "godot_style": "godot/styles/button_icon_disabled.tres"
+    },
+    {
+      "content_rect": {
+        "height": 32,
+        "width": 32,
+        "x": 0,
+        "y": 0
+      },
+      "group": "panel",
+      "height": 32,
+      "id": "panel/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/panel.png",
+      "state": "normal",
+      "tile_columns": 2,
+      "tile_rows": 2,
+      "tile_x": 0,
+      "tile_y": 4,
+      "width": 32,
+      "x": 0,
+      "y": 64,
+      "godot_texture": "godot/regions/panel.tres",
+      "godot_texture_size": {
+        "width": 32,
+        "height": 32
+      },
+      "godot_style": "godot/styles/panel.tres"
+    },
+    {
+      "content_rect": {
+        "height": 32,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "hud_panel",
+      "height": 32,
+      "id": "hud_panel/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/hud_panel.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 2,
+      "tile_x": 3,
+      "tile_y": 4,
+      "width": 96,
+      "x": 48,
+      "y": 64,
+      "godot_texture": "godot/regions/hud_panel.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 32
+      },
+      "godot_style": "godot/styles/hud_panel.tres"
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/pause",
+      "optional": false,
+      "png": "png/icons_pause.png",
+      "state": "pause",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 10,
+      "tile_y": 4,
+      "width": 16,
+      "x": 160,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_pause.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/back",
+      "optional": false,
+      "png": "png/icons_back.png",
+      "state": "back",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 12,
+      "tile_y": 4,
+      "width": 16,
+      "x": 192,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_back.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/restart",
+      "optional": false,
+      "png": "png/icons_restart.png",
+      "state": "restart",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 14,
+      "tile_y": 4,
+      "width": 16,
+      "x": 224,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_restart.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/home",
+      "optional": false,
+      "png": "png/icons_home.png",
+      "state": "home",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 16,
+      "tile_y": 4,
+      "width": 16,
+      "x": 256,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_home.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/settings",
+      "optional": false,
+      "png": "png/icons_settings.png",
+      "state": "settings",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 18,
+      "tile_y": 4,
+      "width": 16,
+      "x": 288,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_settings.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/close",
+      "optional": false,
+      "png": "png/icons_close.png",
+      "state": "close",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 20,
+      "tile_y": 4,
+      "width": 16,
+      "x": 320,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_close.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/next",
+      "optional": false,
+      "png": "png/icons_next.png",
+      "state": "next",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 22,
+      "tile_y": 4,
+      "width": 16,
+      "x": 352,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_next.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "icons",
+      "height": 16,
+      "id": "icons/help",
+      "optional": false,
+      "png": "png/icons_help.png",
+      "state": "help",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 24,
+      "tile_y": 4,
+      "width": 16,
+      "x": 384,
+      "y": 64,
+      "godot_texture": "godot/regions/icons_help.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "audio_icons",
+      "height": 16,
+      "id": "audio_icons/music_on",
+      "optional": false,
+      "png": "png/audio_icons_music_on.png",
+      "state": "music_on",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 26,
+      "tile_y": 4,
+      "width": 16,
+      "x": 416,
+      "y": 64,
+      "godot_texture": "godot/regions/audio_icons_music_on.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "audio_icons",
+      "height": 16,
+      "id": "audio_icons/music_off",
+      "optional": false,
+      "png": "png/audio_icons_music_off.png",
+      "state": "music_off",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 28,
+      "tile_y": 4,
+      "width": 16,
+      "x": 448,
+      "y": 64,
+      "godot_texture": "godot/regions/audio_icons_music_off.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "audio_icons",
+      "height": 16,
+      "id": "audio_icons/sound_on",
+      "optional": false,
+      "png": "png/audio_icons_sound_on.png",
+      "state": "sound_on",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 30,
+      "tile_y": 4,
+      "width": 16,
+      "x": 480,
+      "y": 64,
+      "godot_texture": "godot/regions/audio_icons_sound_on.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "audio_icons",
+      "height": 16,
+      "id": "audio_icons/sound_off",
+      "optional": false,
+      "png": "png/audio_icons_sound_off.png",
+      "state": "sound_off",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 0,
+      "tile_y": 7,
+      "width": 16,
+      "x": 0,
+      "y": 112,
+      "godot_texture": "godot/regions/audio_icons_sound_off.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 32,
+        "width": 112,
+        "x": 0,
+        "y": 0
+      },
+      "group": "logo",
+      "height": 32,
+      "id": "logo/normal",
+      "optional": false,
+      "png": "png/logo.png",
+      "state": "normal",
+      "tile_columns": 7,
+      "tile_rows": 2,
+      "tile_x": 2,
+      "tile_y": 7,
+      "width": 112,
+      "x": 32,
+      "y": 112,
+      "godot_texture": "godot/regions/logo.tres",
+      "godot_texture_size": {
+        "width": 112,
+        "height": 32
+      }
+    },
+    {
+      "content_rect": {
+        "height": 48,
+        "width": 48,
+        "x": 0,
+        "y": 0
+      },
+      "group": "level_card",
+      "height": 48,
+      "id": "level_card/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/level_card_normal.png",
+      "state": "normal",
+      "tile_columns": 3,
+      "tile_rows": 3,
+      "tile_x": 10,
+      "tile_y": 7,
+      "width": 48,
+      "x": 160,
+      "y": 112,
+      "godot_texture": "godot/regions/level_card_normal.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 48
+      },
+      "godot_style": "godot/styles/level_card_normal.tres"
+    },
+    {
+      "content_rect": {
+        "height": 48,
+        "width": 48,
+        "x": 0,
+        "y": 0
+      },
+      "group": "level_card",
+      "height": 48,
+      "id": "level_card/hover",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/level_card_hover.png",
+      "state": "hover",
+      "tile_columns": 3,
+      "tile_rows": 3,
+      "tile_x": 14,
+      "tile_y": 7,
+      "width": 48,
+      "x": 224,
+      "y": 112,
+      "godot_texture": "godot/regions/level_card_hover.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 48
+      },
+      "godot_style": "godot/styles/level_card_hover.tres"
+    },
+    {
+      "content_rect": {
+        "height": 48,
+        "width": 48,
+        "x": 0,
+        "y": 0
+      },
+      "group": "level_card",
+      "height": 48,
+      "id": "level_card/pressed",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/level_card_pressed.png",
+      "state": "pressed",
+      "tile_columns": 3,
+      "tile_rows": 3,
+      "tile_x": 18,
+      "tile_y": 7,
+      "width": 48,
+      "x": 288,
+      "y": 112,
+      "godot_texture": "godot/regions/level_card_pressed.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 48
+      },
+      "godot_style": "godot/styles/level_card_pressed.tres"
+    },
+    {
+      "content_rect": {
+        "height": 48,
+        "width": 48,
+        "x": 0,
+        "y": 0
+      },
+      "group": "level_card",
+      "height": 48,
+      "id": "level_card/locked",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/level_card_locked.png",
+      "state": "locked",
+      "tile_columns": 3,
+      "tile_rows": 3,
+      "tile_x": 22,
+      "tile_y": 7,
+      "width": 48,
+      "x": 352,
+      "y": 112,
+      "godot_texture": "godot/regions/level_card_locked.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 48
+      },
+      "godot_style": "godot/styles/level_card_locked.tres"
+    },
+    {
+      "content_rect": {
+        "height": 12,
+        "width": 12,
+        "x": 2,
+        "y": 2
+      },
+      "group": "lock",
+      "height": 16,
+      "id": "lock/normal",
+      "optional": false,
+      "png": "png/lock.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 26,
+      "tile_y": 7,
+      "width": 16,
+      "x": 416,
+      "y": 112,
+      "godot_texture": "godot/regions/lock.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 8,
+        "width": 8,
+        "x": 4,
+        "y": 4
+      },
+      "group": "star_small",
+      "height": 16,
+      "id": "star_small/empty",
+      "optional": false,
+      "png": "png/star_small_empty.png",
+      "state": "empty",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 28,
+      "tile_y": 7,
+      "width": 16,
+      "x": 448,
+      "y": 112,
+      "godot_texture": "godot/regions/star_small_empty.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 8,
+        "width": 8,
+        "x": 4,
+        "y": 4
+      },
+      "group": "star_small",
+      "height": 16,
+      "id": "star_small/full",
+      "optional": false,
+      "png": "png/star_small_full.png",
+      "state": "full",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 30,
+      "tile_y": 7,
+      "width": 16,
+      "x": 480,
+      "y": 112,
+      "godot_texture": "godot/regions/star_small_full.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "star_large",
+      "height": 16,
+      "id": "star_large/empty",
+      "optional": false,
+      "png": "png/star_large_empty.png",
+      "state": "empty",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 0,
+      "tile_y": 11,
+      "width": 16,
+      "x": 0,
+      "y": 176,
+      "godot_texture": "godot/regions/star_large_empty.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "star_large",
+      "height": 16,
+      "id": "star_large/full",
+      "optional": false,
+      "png": "png/star_large_full.png",
+      "state": "full",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 2,
+      "tile_y": 11,
+      "width": 16,
+      "x": 32,
+      "y": 176,
+      "godot_texture": "godot/regions/star_large_full.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "power_frame",
+      "height": 16,
+      "id": "power_frame/normal",
+      "nine_patch_margin": 2,
+      "optional": true,
+      "png": "png/power_frame.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 4,
+      "tile_y": 11,
+      "width": 96,
+      "x": 64,
+      "y": 176,
+      "godot_texture": "godot/regions/power_frame.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/power_frame.tres"
+    },
+    {
+      "content_rect": {
+        "height": 12,
+        "width": 92,
+        "x": 2,
+        "y": 2
+      },
+      "group": "power_fill",
+      "height": 16,
+      "id": "power_fill/normal",
+      "optional": true,
+      "png": "png/power_fill.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 11,
+      "tile_y": 11,
+      "width": 96,
+      "x": 176,
+      "y": 176,
+      "godot_texture": "godot/regions/power_fill.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 96,
+        "x": 0,
+        "y": 0
+      },
+      "group": "slider_track",
+      "height": 16,
+      "id": "slider_track/normal",
+      "nine_patch_margin": 2,
+      "optional": false,
+      "png": "png/slider_track.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 18,
+      "tile_y": 11,
+      "width": 96,
+      "x": 288,
+      "y": 176,
+      "godot_texture": "godot/regions/slider_track.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      },
+      "godot_style": "godot/styles/slider_track.tres"
+    },
+    {
+      "content_rect": {
+        "height": 4,
+        "width": 92,
+        "x": 2,
+        "y": 6
+      },
+      "group": "slider_fill",
+      "height": 16,
+      "id": "slider_fill/normal",
+      "optional": false,
+      "png": "png/slider_fill.png",
+      "state": "normal",
+      "tile_columns": 6,
+      "tile_rows": 1,
+      "tile_x": 25,
+      "tile_y": 11,
+      "width": 96,
+      "x": 400,
+      "y": 176,
+      "godot_texture": "godot/regions/slider_fill.tres",
+      "godot_texture_size": {
+        "width": 96,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 12,
+        "width": 8,
+        "x": 4,
+        "y": 2
+      },
+      "group": "slider_handle",
+      "height": 16,
+      "id": "slider_handle/normal",
+      "optional": false,
+      "png": "png/slider_handle_normal.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 0,
+      "tile_y": 13,
+      "width": 16,
+      "x": 0,
+      "y": 208,
+      "godot_texture": "godot/regions/slider_handle_normal.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 12,
+        "width": 8,
+        "x": 4,
+        "y": 2
+      },
+      "group": "slider_handle",
+      "height": 16,
+      "id": "slider_handle/hover",
+      "optional": false,
+      "png": "png/slider_handle_hover.png",
+      "state": "hover",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 2,
+      "tile_y": 13,
+      "width": 16,
+      "x": 32,
+      "y": 208,
+      "godot_texture": "godot/regions/slider_handle_hover.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 12,
+        "width": 8,
+        "x": 4,
+        "y": 2
+      },
+      "group": "slider_handle",
+      "height": 16,
+      "id": "slider_handle/dragging",
+      "optional": false,
+      "png": "png/slider_handle_dragging.png",
+      "state": "dragging",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 4,
+      "tile_y": 13,
+      "width": 16,
+      "x": 64,
+      "y": 208,
+      "godot_texture": "godot/regions/slider_handle_dragging.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "checkbox",
+      "height": 16,
+      "id": "checkbox/unchecked",
+      "optional": false,
+      "png": "png/checkbox_unchecked.png",
+      "state": "unchecked",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 6,
+      "tile_y": 13,
+      "width": 16,
+      "x": 96,
+      "y": 208,
+      "godot_texture": "godot/regions/checkbox_unchecked.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "checkbox",
+      "height": 16,
+      "id": "checkbox/checked",
+      "optional": false,
+      "png": "png/checkbox_checked.png",
+      "state": "checked",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 8,
+      "tile_y": 13,
+      "width": 16,
+      "x": 128,
+      "y": 208,
+      "godot_texture": "godot/regions/checkbox_checked.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "checkbox",
+      "height": 16,
+      "id": "checkbox/unchecked_focus",
+      "optional": false,
+      "png": "png/checkbox_unchecked_focus.png",
+      "state": "unchecked_focus",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 10,
+      "tile_y": 13,
+      "width": 16,
+      "x": 160,
+      "y": 208,
+      "godot_texture": "godot/regions/checkbox_unchecked_focus.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "checkbox",
+      "height": 16,
+      "id": "checkbox/checked_focus",
+      "optional": false,
+      "png": "png/checkbox_checked_focus.png",
+      "state": "checked_focus",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 12,
+      "tile_y": 13,
+      "width": 16,
+      "x": 192,
+      "y": 208,
+      "godot_texture": "godot/regions/checkbox_checked_focus.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 24,
+        "width": 48,
+        "x": 0,
+        "y": 4
+      },
+      "group": "mouse_drag_hint",
+      "height": 32,
+      "id": "mouse_drag_hint/press",
+      "optional": true,
+      "png": "png/mouse_drag_hint_press.png",
+      "state": "press",
+      "tile_columns": 3,
+      "tile_rows": 2,
+      "tile_x": 14,
+      "tile_y": 13,
+      "width": 48,
+      "x": 224,
+      "y": 208,
+      "godot_texture": "godot/regions/mouse_drag_hint_press.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 32
+      }
+    },
+    {
+      "content_rect": {
+        "height": 24,
+        "width": 48,
+        "x": 0,
+        "y": 4
+      },
+      "group": "mouse_drag_hint",
+      "height": 32,
+      "id": "mouse_drag_hint/drag",
+      "optional": true,
+      "png": "png/mouse_drag_hint_drag.png",
+      "state": "drag",
+      "tile_columns": 3,
+      "tile_rows": 2,
+      "tile_x": 18,
+      "tile_y": 13,
+      "width": 48,
+      "x": 288,
+      "y": 208,
+      "godot_texture": "godot/regions/mouse_drag_hint_drag.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 32
+      }
+    },
+    {
+      "content_rect": {
+        "height": 24,
+        "width": 48,
+        "x": 0,
+        "y": 4
+      },
+      "group": "mouse_drag_hint",
+      "height": 32,
+      "id": "mouse_drag_hint/release",
+      "optional": true,
+      "png": "png/mouse_drag_hint_release.png",
+      "state": "release",
+      "tile_columns": 3,
+      "tile_rows": 2,
+      "tile_x": 22,
+      "tile_y": 13,
+      "width": 48,
+      "x": 352,
+      "y": 208,
+      "godot_texture": "godot/regions/mouse_drag_hint_release.tres",
+      "godot_texture_size": {
+        "width": 48,
+        "height": 32
+      }
+    },
+    {
+      "content_rect": {
+        "height": 8,
+        "width": 8,
+        "x": 4,
+        "y": 4
+      },
+      "group": "check",
+      "height": 16,
+      "id": "check/normal",
+      "optional": true,
+      "png": "png/check.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 26,
+      "tile_y": 13,
+      "width": 16,
+      "x": 416,
+      "y": 208,
+      "godot_texture": "godot/regions/check.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 8,
+        "width": 8,
+        "x": 4,
+        "y": 4
+      },
+      "group": "aim_head",
+      "height": 16,
+      "id": "aim_head/normal",
+      "optional": true,
+      "png": "png/aim_head.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 28,
+      "tile_y": 13,
+      "width": 16,
+      "x": 448,
+      "y": 208,
+      "godot_texture": "godot/regions/aim_head.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 16,
+        "width": 16,
+        "x": 0,
+        "y": 0
+      },
+      "group": "ball_ready_ring",
+      "height": 16,
+      "id": "ball_ready_ring/normal",
+      "optional": true,
+      "png": "png/ball_ready_ring.png",
+      "state": "normal",
+      "tile_columns": 1,
+      "tile_rows": 1,
+      "tile_x": 30,
+      "tile_y": 13,
+      "width": 16,
+      "x": 480,
+      "y": 208,
+      "godot_texture": "godot/regions/ball_ready_ring.tres",
+      "godot_texture_size": {
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "content_rect": {
+        "height": 32,
+        "width": 112,
+        "x": 0,
+        "y": 0
+      },
+      "group": "result_banner",
+      "height": 32,
+      "id": "result_banner/normal",
+      "nine_patch_margin": 2,
+      "optional": true,
+      "png": "png/result_banner.png",
+      "state": "normal",
+      "tile_columns": 7,
+      "tile_rows": 2,
+      "tile_x": 0,
+      "tile_y": 16,
+      "width": 112,
+      "x": 0,
+      "y": 256,
+      "godot_texture": "godot/regions/result_banner.tres",
+      "godot_texture_size": {
+        "width": 112,
+        "height": 32
+      },
+      "godot_style": "godot/styles/result_banner.tres"
+    },
+    {
+      "content_rect": {
+        "height": 180,
+        "width": 320,
+        "x": 0,
+        "y": 0
+      },
+      "group": "menu_background",
+      "height": 192,
+      "id": "menu_background/normal",
+      "optional": false,
+      "png": "png/menu_background.png",
+      "state": "normal",
+      "tile_columns": 20,
+      "tile_rows": 12,
+      "tile_x": 8,
+      "tile_y": 16,
+      "width": 320,
+      "x": 128,
+      "y": 256,
+      "godot_texture": "godot/regions/menu_background.tres",
+      "godot_texture_size": {
+        "width": 320,
+        "height": 180
+      }
+    }
+  ],
+  "source": "SummerTile.aseprite",
+  "source_grid_height": 16,
+  "source_grid_width": 16,
+  "state_images_are_not_animations": true,
+  "version": 2,
+  "godot_import_folder": "Assets/UI/SummerUI-v2",
+  "godot_texture_count": 55,
+  "godot_style_count": 21,
+  "godot_tileset": "godot/tileset_16.tres"
+}

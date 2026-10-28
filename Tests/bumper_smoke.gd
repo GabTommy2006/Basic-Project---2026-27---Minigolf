@@ -38,23 +38,23 @@ func _run() -> void:
 	check(round_bumper.get_node("Sprite2D").region_rect == Rect2(224, 32, 16, 16), "round uses purple SummerTile region")
 	check(triangle_bumper.get_node("Sprite2D").region_rect == Rect2(176, 32, 16, 16), "triangle uses striped SummerTile region")
 	# Bao gồm bóng chậm, bóng đã được solver phản xạ, góc chéo và giới hạn lực bật.
-	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 0), Vector2.LEFT), Vector2(-150, 0)), "slow direct impact reflects outward with minimum kick")
+	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 0), Vector2.LEFT), Vector2(-180, 0)), "slow direct impact reflects outward with minimum kick")
 	var already_outgoing := Vector2(-80, 30)
-	check(near_vector(round_bumper.get_bounce_velocity(already_outgoing, Vector2.LEFT), already_outgoing.normalized() * 150.0), "already reflected solver velocity is not reflected into object again")
-	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 100), Vector2.LEFT), Vector2(-135, 135)), "oblique hit preserves reflected angle while multiplying speed")
-	check(is_equal_approx(round_bumper.get_bounce_velocity(Vector2(2000, 0), Vector2.LEFT).length(), 240.0), "maximum kick speed caps repeated amplification")
-	check(near_vector(round_bumper.get_bounce_velocity(Vector2.ZERO, Vector2.UP), Vector2(0, -150)), "zero speed impact exits along surface normal")
-	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 0), Vector2.ZERO), Vector2(-150, 0)), "missing normal has safe reverse direction")
+	check(near_vector(round_bumper.get_bounce_velocity(already_outgoing, Vector2.LEFT), already_outgoing.normalized() * 180.0), "already reflected solver velocity is not reflected into object again")
+	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 100), Vector2.LEFT), Vector2(-165, 165)), "oblique hit preserves reflected angle while multiplying speed")
+	check(is_equal_approx(round_bumper.get_bounce_velocity(Vector2(2000, 0), Vector2.LEFT).length(), 300.0), "maximum kick speed caps repeated amplification")
+	check(near_vector(round_bumper.get_bounce_velocity(Vector2.ZERO, Vector2.UP), Vector2(0, -180)), "zero speed impact exits along surface normal")
+	check(near_vector(round_bumper.get_bounce_velocity(Vector2(100, 0), Vector2.ZERO), Vector2(-180, 0)), "missing normal has safe reverse direction")
 	# Các giá trị chỉnh không hợp lệ trong Inspector cũng không được vượt trần vận tốc.
 	round_bumper.maximum_bounce_speed = 100.0
 	round_bumper.minimum_bounce_speed = 200.0
 	check(is_equal_approx(round_bumper.get_bounce_velocity(Vector2(50, 0), Vector2.LEFT).length(), 100.0), "invalid floor above cap still respects cap")
-	round_bumper.maximum_bounce_speed = 240.0
+	round_bumper.maximum_bounce_speed = 300.0
 	round_bumper.minimum_bounce_speed = 0.0
 	round_bumper.speed_multiplier = 0.0
 	check(round_bumper.get_bounce_velocity(Vector2(100, 0), Vector2.LEFT) == Vector2.ZERO, "zero multiplier and floor disable added kick")
-	round_bumper.minimum_bounce_speed = 150.0
-	round_bumper.speed_multiplier = 1.35
+	round_bumper.minimum_bounce_speed = 180.0
+	round_bumper.speed_multiplier = 1.65
 	# Tam giác chỉ chắn phần có hình; nửa trong suốt còn lại không được thành vật chắn vô hình.
 	var triangle_polygon: PackedVector2Array = triangle_bumper.get_node("CollisionPolygon2D").polygon
 	check(Geometry2D.is_point_in_polygon(Vector2(-4, -4), triangle_polygon) and not Geometry2D.is_point_in_polygon(Vector2(5, 5), triangle_polygon), "triangle collider fills painted half and excludes transparent half")
@@ -81,9 +81,9 @@ func _run() -> void:
 			diagonal_hit = true
 		if flat_ball.linear_velocity.x < -100.0:
 			flat_hit = true
-	check(round_hit and absf(ball.linear_velocity.length() - 162.0) < 0.1, "live round impact kicks outward once at incoming 120 times 1.35")
-	check(diagonal_hit and absf(diagonal_ball.linear_velocity.length() - Vector2(120, 120).length() * 1.35) < 0.1, "live triangle diagonal edge reflects outward and amplifies speed")
-	check(flat_hit and absf(flat_ball.linear_velocity.length() - 162.0) < 0.1, "live triangle flat edge uses matching outward normal")
+	check(round_hit and absf(ball.linear_velocity.length() - 198.0) < 0.1, "live round impact kicks outward once at incoming 120 times 1.65")
+	check(diagonal_hit and absf(diagonal_ball.linear_velocity.length() - Vector2(120, 120).length() * 1.65) < 0.1, "live triangle diagonal edge reflects outward and amplifies speed")
+	check(flat_hit and absf(flat_ball.linear_velocity.length() - 198.0) < 0.1, "live triangle flat edge uses matching outward normal")
 	check(ball.stroke_count == 0 and diagonal_ball.stroke_count == 0 and flat_ball.stroke_count == 0, "bumper impacts do not add strokes")
 	# Regression: chạm khi đang đứng yên chưa phải là một cú bật đã kích hoạt.
 	# Sau khi bóng đứng tựa vài bước vật lý, cú đánh mới vào bumper vẫn phải được tăng lực.
@@ -99,7 +99,7 @@ func _run() -> void:
 	resting_ball._pending_shot = Vector2(120, 0)
 	for tick in range(6):
 		await physics_frame
-	check(resting_ball.linear_velocity.x < -160.0 and absf(resting_ball.linear_velocity.length() - 162.0) < 0.1 and resting_ball.stroke_count == 1, "new shot from resting contact still receives exactly one bumper boost")
+	check(resting_ball.linear_velocity.x < -160.0 and absf(resting_ball.linear_velocity.length() - 198.0) < 0.1 and resting_ball.stroke_count == 1, "new shot from resting contact still receives exactly one bumper boost")
 	for body in [ball, diagonal_ball, flat_ball, round_bumper, triangle_bumper, flat_triangle, resting_bumper, resting_ball]:
 		body.free()
 	# Bốn góc có ảnh và collider riêng, nên cần kiểm tra cả pháp tuyến lẫn bóng đi thực tế.
@@ -160,7 +160,7 @@ func _test_triangle_variants() -> void:
 	for sample in samples:
 		var hit_ball = sample["hit_ball"]
 		var empty_direction: Vector2 = sample["empty_direction"]
-		check(near_vector(hit_ball.linear_velocity, empty_direction * 162.0)
+		check(near_vector(hit_ball.linear_velocity, empty_direction * 198.0)
 			and hit_ball.stroke_count == 0,
 			sample["name"] + " live diagonal hit reflects once with exact boosted speed and no stroke")
 		hit_ball.free()

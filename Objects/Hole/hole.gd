@@ -7,7 +7,7 @@ signal completed
 ## Vận tốc tối đa để lỗ nhận bóng, tính bằng pixel thế giới/giây.
 ## Bóng nhanh hơn mức này vẫn có thể lăn qua miệng lỗ mà chưa bị hút vào.
 ## Tăng ngưỡng để bóng dễ vào lỗ hơn; giảm ngưỡng sẽ yêu cầu bóng phải chậm hơn nữa.
-@export var max_capture_speed: float = 70.0
+@export var max_capture_speed: float = 160.0
 
 # Ghi nhớ đã nhận bóng để không hoàn thành nhiều lần; tải lại scene sẽ đặt lại false.
 var _completed := false

@@ -4,12 +4,12 @@
 # Ảnh luôn lấy từ SummerTile.png bằng Region, không tạo hoặc sửa ảnh gốc.
 extends StaticBody2D
 
-## Hệ số nhân tốc độ lúc chạm. Ví dụ 100 * 1.35 = 135 pixel/giây trước khi giới hạn.
-@export_range(0.0, 4.0, 0.05) var speed_multiplier: float = 1.35
-## Tốc độ bật tối thiểu: bóng chạm rất chậm vẫn được đẩy đủ rõ, mặc định 150 pixel/giây.
-@export_range(0.0, 500.0, 5.0) var minimum_bounce_speed: float = 150.0
+## Hệ số nhân tốc độ lúc chạm. Ví dụ 120 * 1.65 = 198 pixel/giây trước khi giới hạn.
+@export_range(0.0, 4.0, 0.05) var speed_multiplier: float = 1.65
+## Tốc độ bật tối thiểu: bóng chạm rất chậm vẫn được đẩy đủ rõ, mặc định 180 pixel/giây.
+@export_range(0.0, 500.0, 5.0) var minimum_bounce_speed: float = 180.0
 ## Chặn cú bật quá mạnh để bóng không tăng tốc vô hạn khi gặp nhiều bumper liên tiếp.
-@export_range(0.0, 1000.0, 5.0) var maximum_bounce_speed: float = 240.0
+@export_range(0.0, 1000.0, 5.0) var maximum_bounce_speed: float = 300.0
 ## Khoảng nghỉ trước khi cùng bumper được đẩy bóng lần nữa, tính bằng giây.
 ## Phần bóng dùng thông số này cùng trạng thái tiếp xúc để không đẩy lặp mỗi frame.
 @export_range(0.0, 2.0, 0.01) var cooldown_seconds: float = 0.12

@@ -1,0 +1,6 @@
+Purpose: instructional reference only, not game assets
+Source: SummerTile.aseprite
+Example PNGs: 54
+All nontransparent example colors are exact SummerTile colors: yes
+All examples are static; input states are separate images.
+Editable reference atlas layers: 54

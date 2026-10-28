@@ -1,0 +1,12 @@
+Canvas: 320 x 180
+Frames: 1 (static)
+Layers: 8
+All pixels opaque: yes
+01 - Outer meadow
+02 - Timber course border
+03 - Quiet mint turf
+04 - Static sand bunker
+05 - Static pond
+06 - Putting green and flag
+07 - Golf ball and small details
+08 - Border shrubs

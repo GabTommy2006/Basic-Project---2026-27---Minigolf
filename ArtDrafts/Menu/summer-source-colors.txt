@@ -1,0 +1,47 @@
+Source: C:/Program Files (x86)/Steam/steamapps/common/Aseprite/SummerTile.aseprite
+Canvas: 256 x 256
+Frames: 1
+Used visible colors: 43
+#67c794 alpha=255 pixels=11644
+#9c6546 alpha=255 pixels=6737
+#48a874 alpha=255 pixels=1464
+#e4e4e7 alpha=255 pixels=1272
+#2d7d51 alpha=255 pixels=1268
+#a1a1aa alpha=255 pixels=1228
+#54311f alpha=255 pixels=1166
+#7a4c32 alpha=255 pixels=1133
+#7f1d1d alpha=255 pixels=1120
+#b91c1c alpha=255 pixels=1104
+#151d2e alpha=255 pixels=1011
+#3b95d9 alpha=255 pixels=781
+#f0d69f alpha=255 pixels=781
+#3c8ecd alpha=255 pixels=546
+#e5c687 alpha=255 pixels=546
+#51a5e6 alpha=255 pixels=531
+#fce9bd alpha=255 pixels=529
+#6c717d alpha=255 pixels=264
+#f97316 alpha=255 pixels=200
+#2a2d36 alpha=255 pixels=200
+#484c57 alpha=255 pixels=172
+#a68545 alpha=255 pixels=171
+#316e8c alpha=255 pixels=171
+#c7a663 alpha=255 pixels=167
+#468eb3 alpha=255 pixels=165
+#c2410c alpha=255 pixels=124
+#1c0e07 alpha=255 pixels=93
+#d946ef alpha=255 pixels=84
+#381f12 alpha=255 pixels=80
+#a21caf alpha=255 pixels=56
+#701a75 alpha=255 pixels=56
+#8a7200 alpha=255 pixels=40
+#3b82f6 alpha=255 pixels=36
+#d1b008 alpha=255 pixels=32
+#7c2d12 alpha=255 pixels=32
+#1e3a8a alpha=255 pixels=32
+#1d4ed8 alpha=255 pixels=28
+#fce128 alpha=255 pixels=24
+#60a5fa alpha=255 pixels=16
+#fb923c alpha=255 pixels=16
+#40454d alpha=255 pixels=12
+#26292e alpha=255 pixels=8
+#000000 alpha=255 pixels=4

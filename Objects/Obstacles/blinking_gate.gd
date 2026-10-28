@@ -1,5 +1,6 @@
 # Cổng vàng mờ dần và co nhẹ khi hiện/ẩn; chỉ pha hiện đủ mới chặn bóng.
 extends StaticBody2D
+signal sound_requested(cue: String)
 
 ## Thời gian cổng hiện đủ và chặn bóng, không tính thời gian chuyển tiếp, đơn vị giây.
 @export_range(0.05, 30.0, 0.05) var visible_duration: float = 1.5
@@ -108,6 +109,7 @@ func _request_fade_out() -> void:
 
 ## Callback deferred đổi va chạm an toàn; không có frame hình đã mờ mà collider còn bật.
 func _commit_fade_out() -> void:
+	sound_requested.emit("gate_switch")
 	_transition_pending = false
 	_collider.disabled = true
 	is_solid = false
@@ -124,6 +126,7 @@ func _commit_solid() -> void:
 		_request_fade_out()
 		return
 	_collider.disabled = false
+	sound_requested.emit("gate_switch")
 	is_solid = true
 	is_hidden = false
 	phase = GatePhase.SOLID

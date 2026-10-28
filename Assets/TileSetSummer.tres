@@ -1,9 +1,13 @@
 [gd_resource type="TileSet" format=3 uid="uid://du66fyya8afuu"]
 
-[ext_resource type="Texture2D" uid="uid://cls7dt02ybrp4" path="res://Assets/SummerTile.png" id="1_kru3e"]
+[ext_resource type="Texture2D" uid="uid://cycianxkoa45o" path="res://Assets/MoreLayer.png" id="1_morelayer"]
+[ext_resource type="Texture2D" uid="uid://cls7dt02ybrp4" path="res://Assets/SummerTile.png" id="2_summer"]
+[ext_resource type="Texture2D" uid="uid://dvu84xfyig3ou" path="res://Assets/MoreLayer2.png" id="3_morelayer2"]
+[ext_resource type="Texture2D" uid="uid://w0pma70lg1n6" path="res://Assets/MoreLayer3.png" id="4_morelayer3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqb2r"]
-texture = ExtResource("1_kru3e")
+resource_name = "SummerTile"
+texture = ExtResource("2_summer")
 0:0/next_alternative_id = 2
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -228,6 +232,31 @@ texture = ExtResource("1_kru3e")
 8:4/0 = 0
 8:4/0/custom_data_1 = "right"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_morelayer"]
+resource_name = "MoreLayer"
+texture = ExtResource("1_morelayer")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_morelayer2"]
+resource_name = "MoreLayer2"
+texture = ExtResource("3_morelayer2")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_morelayer3"]
+resource_name = "MoreLayer3"
+texture = ExtResource("4_morelayer3")
+0:0/0 = 0
+
 [resource]
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "surface_layer"
@@ -235,3 +264,6 @@ custom_data_layer_0/type = 4
 custom_data_layer_1/name = "arrow_direction"
 custom_data_layer_1/type = 4
 sources/0 = SubResource("TileSetAtlasSource_hqb2r")
+sources/1 = SubResource("TileSetAtlasSource_morelayer")
+sources/2 = SubResource("TileSetAtlasSource_morelayer2")
+sources/3 = SubResource("TileSetAtlasSource_morelayer3")

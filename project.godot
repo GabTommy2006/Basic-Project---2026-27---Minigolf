@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Minigolf Basic Project"
-run/main_scene="uid://7cta22woxmb6"
+config/version="1.0.0"
+run/main_scene="res://UI/Main.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [display]
@@ -28,4 +29,6 @@ window/stretch/mode="canvas_items"
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.08235294, 0.11372549, 0.18039216, 1)
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

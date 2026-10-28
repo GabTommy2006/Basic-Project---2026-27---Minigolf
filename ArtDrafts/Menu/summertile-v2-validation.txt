@@ -1,0 +1,19 @@
+Source: C:/Program Files (x86)/Steam/steamapps/common/Aseprite/SummerTile.aseprite
+Canvas: 320 x 180
+Frames: 1 (static)
+Layers: 9
+Source used colors: 43
+Full source palette preserved: 43 entries
+Visible background colors: 26
+All output colors belong to source: yes
+All output pixels opaque: yes
+Source opened read-only and never saved: yes
+01 - SummerTile brown ground
+02 - Original red-white course frame
+03 - Flat beveled SummerTile turf
+04 - Sand copied from SummerTile
+05 - Water copied from SummerTile
+06 - Hole and static flag - source colors
+07 - Ball extracted from original target
+08 - Original direction tile
+09 - Original diamond markers

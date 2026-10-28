@@ -1,0 +1,18 @@
+Pack: SummerUI Steel v2
+Source palette: SummerTile.aseprite
+Source grid: 16 x 16
+Asset groups: 24
+Individual PNGs: 55
+All visible asset pixels are exact SummerTile colors: yes
+All PNG dimensions and atlas origins are multiples of 16: yes
+Outer frame stroke: 1px; bevel: 1px
+Static state images: yes
+Master atlas layers: 55
+Same canvas size across each group's states: yes
+Saved individual-source frames compared to PNGs: 54
+Atlas regions compared to original pixels: 55
+Atlas overlap: none
+Background: 320x180 unchanged composition, steel frame, padded transparently to 320x192
+Game scene integration: not performed
+Python independent checks: all 55 PNGs exact palette, binary alpha, 16px bounds, >=16px gutters, source sizes and state sets passed
+Godot 4.7.2: 55 AtlasTextures, 21 StyleBoxTextures, 55 multi-cell tiles loaded and verified
